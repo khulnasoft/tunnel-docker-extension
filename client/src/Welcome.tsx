@@ -7,7 +7,7 @@ export function Welcome(props: any) {
     let showLoginHelp = props.loggedIn ? 'none' : 'flex';
 
     const goToTunnel = () => {
-        window.ddClient.host.openExternal("https://tunnel.dev")
+        window.ddClient.host.openExternal("https://tunnel.khulnasoft.com")
     }
 
     return (
