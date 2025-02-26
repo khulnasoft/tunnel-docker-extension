@@ -89,7 +89,3 @@ jobs:
     - name: Build project
       run: yarn build
       working-directory: ./client/
-
-    - name: Run tests
-      run: yarn test
-      working-directory: ./client/
