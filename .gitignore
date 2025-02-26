@@ -2,3 +2,4 @@ node_modules
 ui/build/bundle.*
 metrics/.aws-sam
 metrics/samconfig.toml
+bin/*
