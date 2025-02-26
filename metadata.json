@@ -1,0 +1,21 @@
+{
+    "name": "Khulnasoft Tunnel",
+    "provider": "Khulnasoft Security",
+    "icon": "tunnel.svg",
+    "vm": {
+        "composefile": "docker-compose.yaml",
+        "exposes": {
+            "socket": "plugin-tunnel.sock"
+        }
+    },
+    "ui": {
+        "dashboard-tab": {
+            "title": "Tunnel",
+            "root": "/ui",
+            "src": "index.html",
+            "backend": {
+                "socket": "plugin-tunnel.sock"
+            }
+        }
+    }
+}

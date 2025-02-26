@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  tunnel-dd-metrics
+
+Globals:
+  Function:
+    Timeout: 5
+
+Resources:
+  TunnelAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: dev
+      Cors:
+        AllowMethods: "'POST'"
+        AllowOrigin: "'*'"
+      OpenApiVersion: "2.0"
+      Auth:
+        ApiKeyRequired: false
+
+  TunnelDDMetricFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: Tunnel_DockerDesktop_Metrics
+      CodeUri: ./
+      Handler: tunnel-dd-metrics
+      Runtime: go1.x
+      Architectures:
+        - x86_64
+      Tracing: Active
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /ddCapture
+            Method: POST
+            RestApiId: !Ref TunnelAPI
+      Environment:
+        Variables:
+          MEASUREMENT_ID: VALUE
+          API_SECRET: VALUE
+
+Outputs:
+  TunnelDDMetricsAPI:
+    Description: "API Gateway endpoint URL for Tunnel Docker Desktop Metric Gathering"
+    Value: !Sub "https://${TunnelAPI}.execute-api.${AWS::Region}.amazonaws.com/dev/ddCapture/"
+  TunnelDDFunction:
+    Description: "Tunnel Docker Metrics Function"
+    Value: !GetAtt TunnelDDMetricFunction.Arn
+  TunnelDDFunctionIamRole:
+    Description: "Implicit IAM Role created for Tunnel DD Function"
+    Value: !GetAtt TunnelDDMetricFunctionRole.Arn
