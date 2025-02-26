@@ -49,6 +49,16 @@ func ListenOn(addr string) (net.Listener, error) {
 	return Listen(ss[0], ss[1])
 }
 
+// IsSocketAvailable checks if a socket is available.
+func IsSocketAvailable(addr string) bool {
+	conn, err := net.Dial("unix", addr)
+	if err != nil {
+		return false
+	}
+	conn.Close()
+	return true
+}
+
 // Client Creates a client connected to the specified socket
 func Client(addr string) *http.Client {
 	return &http.Client{
