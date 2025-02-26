@@ -65,6 +65,12 @@ func ValidateCredentials(key, secret, cspmUrl string) (string, error) {
 	return response.Data, nil
 }
 
+// IsValidURL checks if a URL is valid.
+func IsValidURL(url string) bool {
+	_, err := http.NewRequest("GET", url, nil)
+	return err == nil
+}
+
 func ComputeHmac256(message string, secret string) (string, error) {
 	key := []byte(secret)
 	h := hmac.New(sha256.New, key)

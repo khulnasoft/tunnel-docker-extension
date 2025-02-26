@@ -47,6 +47,7 @@ func main() {
 	router.POST("/credentials", writeCredentials)
 	router.GET("/credentials", getCredentials)
 	router.DELETE("/credentials", deleteCredentials)
+	router.GET("/health", healthCheck)
 
 	log.Fatal(router.Start(startURL))
 }
@@ -99,4 +100,8 @@ func internalError(ctx echo.Context, err error) error {
 
 type HTTPMessageBody struct {
 	Message string
+}
+
+func healthCheck(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, map[string]string{"status": "healthy"})
 }

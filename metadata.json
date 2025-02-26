@@ -1,6 +1,6 @@
 {
-    "name": "Khulnasoft Tunnel",
-    "provider": "Khulnasoft Security",
+    "name": "KhulnaSoft Tunnel",
+    "provider": "KhulnaSoft Security",
     "icon": "tunnel.svg",
     "vm": {
         "composefile": "docker-compose.yaml",

@@ -93,6 +93,22 @@ make dev-reset
 make.bat dev-reset
 ```
 
+## 🩺 Health Check
+
+The service provides a health check endpoint to verify its status.
+
+### Endpoint
+
+- **GET** `/health`
+
+### Response
+
+```json
+{
+  "status": "healthy"
+}
+```
+
 ## 🚀 CI/CD Process
 
 🔹 On a **new tag release**, a multi-arch build (`linux/amd64` & `linux/arm64`) is triggered via `docker buildx`.

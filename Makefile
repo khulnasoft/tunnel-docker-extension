@@ -14,7 +14,7 @@ bin: ## Build the binary for the current plarform
 
 .PHONY: build-app
 build-app:
-	@npm run-script build
+	@yarn run-script build -C ./client
 
 .PHONY: build-dev
 build-dev:

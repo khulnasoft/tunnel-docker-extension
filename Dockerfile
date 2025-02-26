@@ -40,4 +40,4 @@ COPY tunnel.svg .
 COPY metadata.json .
 COPY service/docker-compose.yaml .
 
-CMD /creds-service 
+CMD ["/creds-service"]

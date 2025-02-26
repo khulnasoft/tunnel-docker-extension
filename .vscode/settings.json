@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    "node_modules": true,
+    "dist": true
+  },
+  "javascript.validate.enable": false,
+  "eslint.enable": true,
+  "eslint.run": "onSave"
+}
